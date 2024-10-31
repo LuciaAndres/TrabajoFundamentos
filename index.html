@@ -6,7 +6,7 @@
     <meta name="viewport" content = "width=device-width, initial-scale=1.0"/>
     <title>🏭Fábrica🏭</title>
     <link rel="stylesheet" href="Fabrica.css">
-    <!--<script src= "Fabrica.js" type="text/javascript"></script>-->
+    <!--<script src= "fabrica.js" type="text/javascript"></script>-->
 </head>
 <body>
     <h1 class="titulo">
@@ -17,15 +17,16 @@
             Pulse "Fabricar 100" para simular la fabricación de 100 piezas <br>
             Pulse "Fabricar 1000" para simular la fabricación de 1000 piezas <br><br>
         </div>
-        <button onclick="simulateProduction(100)" id="botonF100">Fabricar 100</button>
-        <button onclick="simulateProduction(1000)" id="botonF1000">Fabricar 1000</button>
+        <button  id="botonF100">Fabricar 100</button>
+        <button  id="botonF1000">Fabricar 1000</button>
         <div class="texto">
             <p>Resultado de la simulación:</p>
             <div id="resultado"></div> <!-- Contenedor para los resultados -->
         </div>
+        <script src= "fabrica.js" type="text/javascript"></script>
     </div>
 
-    <script>
+    <!--<script>
         // Función para activar la animación del coche
         function animateCar() {
             const coche = document.querySelector(".coche");
@@ -46,10 +47,16 @@
 
         document.getElementById("botonF1000").addEventListener("click",function(){Simular(1000)});
 
+        function animateCar() {
+            const coche = document.querySelector(".coche");
+            coche.classList.remove("animate"); // Reinicia la animación si ya está activada
+            void coche.offsetWidth; // Forzar reflow para reiniciar la animación
+            coche.classList.add("animate");
+        }
 
         function Simular(turnos)
         {
-
+         animateCar();   
             var pElectricas = 0; 
             var pMecanicas = 0;
             var bNormal = 0;
@@ -102,6 +109,7 @@
             {
             
                 let tipo = getRandomInt(10);
+                Console.log(tipo);
                 if(tipo<3)
                 {
                     const pieza = new PiezaElectrica(getRandomInt(5),getRandomInt(4),getRandomInt(4), makeCode("E") , Date(),null);
@@ -209,7 +217,7 @@
             {
                 return this.potencia;
             }
-            set SetPotencia(newPotencia)
+            SetPotencia(newPotencia)
             {
                 let Pot = new [1,5,10,20];
                 this.potencia = Pot[newPotencia];
@@ -218,7 +226,7 @@
             {
                 return this.Voltage;
             }
-            set SetVoltage(newVoltage)
+            SetVoltage(newVoltage)
             {
                 let Vol = [3.3,5,12,240];
                 this.Voltage = Vol[newVoltage];
@@ -227,7 +235,7 @@
             {
                 return this.name;
             }
-            set SetName(newName)
+            SetName(newName)
             {
                 let Name = ["Placa Abs","Centralita encendido", "Bornes cableado","Alternador","Encendido"];
                 this.name = Name[newName];
@@ -239,14 +247,14 @@
             constructor(name, material, code, date, procesamiento)
             {
                 super(code,date,procesamiento);
-                SetMaterial(material);
+                this.SetMaterial(material);
                 this.SetName(name);
             }
             get GetMaterial()
             {
                 return this.material;
             }
-            set SetMaterial(newMaterial)
+            SetMaterial(newMaterial)
             {
                 let Mat = ["Acero","Titanio","Carbono"];
 
@@ -256,12 +264,12 @@
             {
                 return this.name;
             }
-            set SetName(newName)
+            SetName(newName)
             {
                 let Name = ["Larguero Inferior","Guardabarros", "Larguero Superior","Subchasis","Puerta"];
                 this.name = Name[newName];
             }
         }
-    </script>
+    </script>-->
 </body>
 </html>

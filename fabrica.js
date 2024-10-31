@@ -1,33 +1,8 @@
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="autor" content = "Lucas Joglar y Lucía Andrés"/>
-    <meta name="viewport" content = "width=device-width, initial-scale=1.0"/>
-    <title>🏭Fábrica🏭</title>
-    <link rel="stylesheet" href="Fabrica.css">
-    <!--<script src= "Fabrica.js" type="text/javascript"></script>-->
-</head>
-<body>
-    <h1 class="titulo">
-        <span class="coche"> 🚗 &nbsp;&nbsp;&nbsp;&nbsp;    🚗&nbsp;&nbsp;&nbsp;&nbsp;     🚗&nbsp;&nbsp;&nbsp;&nbsp;     🚗 &nbsp;&nbsp;&nbsp;&nbsp;    🚗    &nbsp;&nbsp;&nbsp;&nbsp; 🚗 &nbsp;&nbsp;&nbsp;&nbsp;    🚗&nbsp;&nbsp;&nbsp;&nbsp;     🚗</span> 
-    </h1>
-    <div class= "contenedora">
-        <div class="texto">
-            Pulse "Fabricar 100" para simular la fabricación de 100 piezas <br>
-            Pulse "Fabricar 1000" para simular la fabricación de 1000 piezas <br><br>
-        </div>
-        <button onclick="simulateProduction(100)" id="botonF100">Fabricar 100</button>
-        <button onclick="simulateProduction(1000)" id="botonF1000">Fabricar 1000</button>
-        <div class="texto">
-            <p>Resultado de la simulación:</p>
-            <div id="resultado"></div> <!-- Contenedor para los resultados -->
-        </div>
-    </div>
+       document.getElementById("botonF100").addEventListener("click",function(){Simular(100)});
 
-    <script>
-        // Función para activar la animación del coche
-        function animateCar() {
+        document.getElementById("botonF1000").addEventListener("click",function(){Simular(1000)});
+
+         function animateCar() {
             const coche = document.querySelector(".coche");
             coche.classList.remove("animate"); // Reinicia la animación si ya está activada
             void coche.offsetWidth; // Forzar reflow para reiniciar la animación
@@ -35,21 +10,10 @@
         }
 
         // Función para simular la producción y activar la animación del coche
-        function simulateProduction(quantity) {
-            // Lógica de simulación (por ejemplo, cálculo de piezas exitosas y defectuosas)
-
-
-            // Activar la animación del coche
-            animateCar();
-        }
-        document.getElementById("botonF100").addEventListener("click",function(){Simular(100)});
-
-        document.getElementById("botonF1000").addEventListener("click",function(){Simular(1000)});
-
 
         function Simular(turnos)
         {
-
+        	animateCar();
             var pElectricas = 0; 
             var pMecanicas = 0;
             var bNormal = 0;
@@ -61,13 +25,36 @@
         Fab = new Fabrica();
 
         let piezas = Fab.fabricar(turnos);
-
-
-
-        var texto = "<p>" + "La factoría ha fabricado " + (pElectricas+pMecanicas) + " de las cuales" +pElectricas+"son de tipo eléctrico y "+pMecanicas+" son de tipo mecánico. " + "</p>" +
+        for (var i = 0 ; i < piezas.length ; i++) {
+        	let pieza = piezas[i];
+    		if (piezas[i] instanceof PiezaElectrica)
+   			{
+        		pElectricas++;
+        		if (pieza.potencia == 1 || pieza.potencia == 5) 
+        		{
+        			bNormal++;
+        		} else {
+        			bEspecial++;
+        		}
+    		} else {
+        		pMecanicas++;
+        		  if(pieza.material == "Acero")
+                        {
+                         galvanizadas++;
+                        } else if(pieza.material == "Titanio"){
+                         pulidas++;
+                         
+                        } else {
+                         pintados++;
+                        
+                        }
+    		}
+    	}
+        var texto = "<p>" + "La factoría ha fabricado " + (pElectricas+pMecanicas) + " de las cuales " +pElectricas+" son de tipo eléctrico y "+pMecanicas+" son de tipo mecánico. " + "</p>" +
         "<p>" + "De las eléctricas, la estación de tratamiento ha aplicado barniz normal a "+ bNormal +" y ha aplicado barniz especial a "+ bEspecial +"." + "</p>" +
-        "<p>" + "De las mecánicas ha galvanizado "+ galvanizadas +", ha pintado "+ pintados +" y ha pulido "+ pulidas +"" + "</p>" 
-        ;
+        "<p>" + "De las mecánicas ha galvanizado "+ galvanizadas +", ha pintado "+ pintados +" y ha pulido "+ pulidas +"" + "</p>" ;
+    	console.log(texto);
+        
         document.getElementById("resultado").innerHTML = texto;
         }
 
@@ -81,6 +68,7 @@
             }
         fabricar(turnos)
         {
+        	let pieza = null;
             var Fac = new Factoria();
             var Pros = new EstacionDeTratamiento();
             var piezas = [];
@@ -89,9 +77,10 @@
               
                 pieza = Fac.generarPieza();
                 pieza = Pros.procesarPieza(pieza);
+                piezas.push(pieza);
                     
             }
-            return piezas.push(pieza);
+            return piezas;
         }
 
         }
@@ -100,13 +89,15 @@
         {
             generarPieza()
             {
-            
+            	var pieza = null;
                 let tipo = getRandomInt(10);
                 if(tipo<3)
                 {
-                    const pieza = new PiezaElectrica(getRandomInt(5),getRandomInt(4),getRandomInt(4), makeCode("E") , Date(),null);
+                    var pieza = new PiezaElectrica(getRandomInt(5),getRandomInt(4),getRandomInt(4), makeCode("E") , Date(),null);
+
                 } else {
-                    const pieza = new PiezaMecanica(getRandomInt(5),getRandomInt(3), makeCode("M") ,Date(),null);
+
+                    var pieza = new PiezaMecanica(getRandomInt(5),getRandomInt(3), makeCode("M") ,Date(),null);
                 }
                 return pieza;
             }
@@ -119,7 +110,7 @@
                 let tratamiento = null;
                 if(pieza instanceof PiezaElectrica )
                 {
-                    if(pieza.GetPotencia() == 1 || this.GetPotencia() == 5)
+                    if(pieza.potencia == 1 || pieza.potencia == 5)
                         {
                          tratamiento = "Barnizada Normal";
                        
@@ -128,11 +119,11 @@
                          
                         }
                 } else {
-                    if(pieza.GetMaterial() == "Acero")
+                    if(pieza.material == "Acero")
                         {
                          tratamiento = "Galvanizada";
                          
-                        } else if(this.GetMaterial() == "Titanio"){
+                        } else if(pieza.material == "Titanio"){
                          tratamiento = "Pulida";
                          
                         } else {
@@ -140,7 +131,7 @@
                         
                         }
                      }
-                pieza.SetPros(tratamiento);
+                pieza.procesamiento = tratamiento;
 
                 return pieza;
             } 
@@ -171,27 +162,27 @@
              }
              get GetCode()
              {
-                return this.code;
+                return this._code;
              }
              get GetDate()
              {
-                return this.date;
+                return this._date;
              }
              set SetCode(newCode)
              {
-               this.code;
+               this._code;
              }
              set SetDate(newDate)
              {
-                this.date = newDate;
+                this._date = newDate;
              }
                 set SetPros(newprocesamiento)
             {
-               this.procesamiento = newprocesamiento;
+               this._procesamiento = newprocesamiento;
             }
             get GetPros()
             {
-              return this.procesamiento;
+              return this._procesamiento;
             }
         }
 
@@ -209,16 +200,16 @@
             {
                 return this.potencia;
             }
-            set SetPotencia(newPotencia)
+            SetPotencia(newPotencia)
             {
-                let Pot = new [1,5,10,20];
+                let Pot = [1,5,10,20];
                 this.potencia = Pot[newPotencia];
             }
             get GetVoltage()
             {
                 return this.Voltage;
             }
-            set SetVoltage(newVoltage)
+            SetVoltage(newVoltage)
             {
                 let Vol = [3.3,5,12,240];
                 this.Voltage = Vol[newVoltage];
@@ -227,7 +218,7 @@
             {
                 return this.name;
             }
-            set SetName(newName)
+            SetName(newName)
             {
                 let Name = ["Placa Abs","Centralita encendido", "Bornes cableado","Alternador","Encendido"];
                 this.name = Name[newName];
@@ -239,14 +230,14 @@
             constructor(name, material, code, date, procesamiento)
             {
                 super(code,date,procesamiento);
-                SetMaterial(material);
+                this.SetMaterial(material);
                 this.SetName(name);
             }
             get GetMaterial()
             {
                 return this.material;
             }
-            set SetMaterial(newMaterial)
+            SetMaterial(newMaterial)
             {
                 let Mat = ["Acero","Titanio","Carbono"];
 
@@ -256,12 +247,9 @@
             {
                 return this.name;
             }
-            set SetName(newName)
+            SetName(newName)
             {
                 let Name = ["Larguero Inferior","Guardabarros", "Larguero Superior","Subchasis","Puerta"];
                 this.name = Name[newName];
             }
         }
-    </script>
-</body>
-</html>
