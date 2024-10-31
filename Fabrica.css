@@ -1,0 +1,57 @@
+.contenedora{
+	text-align: center;
+	padding: 5em 0;
+}
+.coche {
+    position: fixed;
+    top: 10px;
+    left: -100px; /* Empieza fuera de la pantalla a la izquierda */
+    font-size: 2em;
+    display: none; /* Oculto inicialmente */
+}
+.coche.animate {
+    display: block;
+    animation: moverCoche 10s linear forwards; /* El coche se mueve solo una vez */
+}
+@keyframes moverCoche {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(150vw);
+    }
+}
+.texto{
+	font-size: 36px ;
+	font-family: "Times New Roman", Times, serif;
+}
+body {
+   /* background-color: black; /* Cambia este color por el que desees 
+    margin: 0;
+    padding: 0;
+    color: whitesmoke;*/
+    background-image: url('l.jfif');
+    background-size: cover; /* Hace que la imagen cubra todo el fondo */
+    background-position: center; /* Centra la imagen */
+    height: 100vh; /* Altura del 100% de la ventana */
+    margin: 80; /* Elimina el margen por defecto */
+}
+#botonF100 {
+    width: 150px;         
+    height: 50px;         
+    font-size: 16px;      
+    padding: 10px 20px;   
+    font-family: "Times New Roman", Times, serif;
+    color: whitesmoke;
+    background-color: black;
+}
+
+#botonF1000 {
+    width: 150px;         
+    height: 50px;         
+    font-size: 16px;     
+    padding: 10px 20px;   
+    font-family: "Times New Roman", Times, serif;
+    color: whitesmoke;
+    background-color: black;
+}
