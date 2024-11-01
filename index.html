@@ -8,47 +8,33 @@
     <!--<script src= "fabrica.js" type="text/javascript"></script>-->
 </head>
 <body>
-    <div class="side-image left-image"></div>
-    <div class="side-image right-image"></div>
+   <!-- <div class="side-image left-image"></div>-->
+   <!-- <div class="side-image right-image"></div>-->
     <h1 class="titulo">
         <span class="coche"> 🚗 &nbsp;&nbsp;&nbsp;&nbsp;    🚗&nbsp;&nbsp;&nbsp;&nbsp;     🚗&nbsp;&nbsp;&nbsp;&nbsp;     🚗 &nbsp;&nbsp;&nbsp;&nbsp;    🚗    &nbsp;&nbsp;&nbsp;&nbsp; 🚗 &nbsp;&nbsp;&nbsp;&nbsp;    🚗&nbsp;&nbsp;&nbsp;&nbsp;     🚗</span> 
     </h1>
     <div class= "contenedora">
         <div class="texto">
-            Pulse "Fabricar 100" para simular la fabricación de 100 piezas <br>
-            Pulse "Fabricar 1000" para simular la fabricación de 1000 piezas <br><br>
+            Pulse "Fabricar 100" para simular la fabricación de 100 piezas. <br>
+            Pulse "Fabricar 1000" para simular la fabricación de 1000 piezas. <br><br>
         </div>
         <button  id="botonF100">Fabricar 100</button>
         <button  id="botonF1000">Fabricar 1000</button> <br><br>
 
+       <div class ="texto">
+        Continuidad: <br>           
+       </div> 
 
         <label class="switch">
           <input type="checkbox" id="sliderCheckbox">
           <span class="slider"></span>
         </label>
 
-        <!-- Borrar, solo es para comprobar-->
-        <p><span id="sliderValue">false</span></p>
-
-
         <div class="texto">
             <p>Resultado de la simulación:</p>
             <div id="resultado"></div> 
         </div>
         <script src= "fabrica.js" type="text/javascript"></script> <!--si el script esta arriba(como lo señalado en el power point), el código no funciona-->
-        <script>
-          // Seleccionamos el checkbox y el span donde mostraremos el valor
-          const sliderCheckbox = document.getElementById('sliderCheckbox');
-          const sliderValue = document.getElementById('sliderValue');
-
-          // Función que actualiza el valor del slider
-          function updateSliderValue() {
-            sliderValue.textContent = sliderCheckbox.checked ? 'true' : 'false';
-          }
-
-          // Evento para cuando cambia el estado del slider
-          sliderCheckbox.addEventListener('change', updateSliderValue);
-        </script>
     </div>
 
 </body>

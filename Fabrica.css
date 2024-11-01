@@ -23,18 +23,18 @@
 }
 .texto{
 	font-size: 36px ;
-	/*font-family: "Times New Roman", Times, serif;*/
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
+	font-family: "Times New Roman", Times, serif;
+    /*font-family: "Comic Sans MS", "Comic Sans", cursive;*/
 }
 body {
-   /* background-color: black; /* Cambia este color por el que desees 
+    background-color: black; /* Cambia este color por el que desees */
     margin: 0;
-    padding: 0;*/
-    /*color: whitesmoke;
+    padding: 0;
+    color: whitesmoke;
     background-color: #141d26;
-    background-size: cover; /* Hace que la imagen cubra todo el fondo */
-    background-image: url(l.jpeg);
-    background-size: cover; /* Scales image to cover the full background */
+    background-size: cover; /* Hace que la imagen cubra todo el fondo 
+    /*background-image: url(l.jpeg);
+    background-size: cover;  Scales image to cover the full background */
     background-repeat: no-repeat; /* Prevents image from repeating */
     background-position: center; /* Centers image on the page */
     height: 100vh; /* Altura del 100% de la ventana */

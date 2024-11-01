@@ -1,7 +1,18 @@
        document.getElementById("botonF100").addEventListener("click",function(){Simular(100)});
 
         document.getElementById("botonF1000").addEventListener("click",function(){Simular(1000)});
+          // Seleccionamos el checkbox y el span donde mostraremos el valor
+          const sliderCheckbox = document.getElementById('sliderCheckbox');
+          const sliderValue = document.getElementById('sliderValue');
+          var firstload = true;
+          let sliderChecked = sliderCheckbox.checked;
+          // Función que actualiza el valor del slider
+          function updateSliderValue() {
+            sliderChecked = sliderCheckbox.checked;
+          }
 
+          // Evento para cuando cambia el estado del slider
+          sliderCheckbox.addEventListener('change', updateSliderValue);
          function animateCar() {
             const coche = document.querySelector(".coche");
             coche.classList.remove("animate"); // Reinicia la animación si ya está activada
@@ -13,7 +24,6 @@
 
         function Simular(turnos)
         {
-        	animateCar();
             var pElectricas = 0; 
             var pMecanicas = 0;
             var bNormal = 0;
@@ -21,8 +31,12 @@
             var galvanizadas = 0;
             var pulidas = 0;
             var pintados = 0;
-
-        Fab = new Fabrica();
+        	animateCar();
+            if (!sliderChecked || firstload) 
+            {
+            Fab = new Fabrica();
+            firstload = false;
+            }
 
         let piezas = Fab.fabricar(turnos);
         for (var i = 0 ; i < piezas.length ; i++) {
@@ -62,25 +76,22 @@
         {
             constructor()
             {
-                var Fac = new Factoria();
-                var Pros = new EstacionDeTratamiento();
-                var piezas = [];
+                this.Fac = new Factoria();
+                this.Pros = new EstacionDeTratamiento();
+                this.piezas = [];
             }
         fabricar(turnos)
         {
         	let pieza = null;
-            var Fac = new Factoria();
-            var Pros = new EstacionDeTratamiento();
-            var piezas = [];
             for(var i = 0; i < turnos; i++)
             {
               
-                pieza = Fac.generarPieza();
-                pieza = Pros.procesarPieza(pieza);
-                piezas.push(pieza);
+                pieza = this.Fac.generarPieza();
+                pieza = this.Pros.procesarPieza(pieza);
+                this.piezas.push(pieza);
                     
             }
-            return piezas;
+            return this.piezas;
         }
 
         }
