@@ -1,17 +1,18 @@
 .contenedora{
 	text-align: center;
 	padding: 5em 0;
+    padding-top: 20px;
 }
 .coche {
-    position: absolute;
+    position: absolute; /*Para que se quede la linea de coches arriba */
     top: 10px;
-    left: -100px; /* Empieza fuera de la pantalla a la izquierda */
+    left: -100px; /*Empieza desde fuera de la pantalla*/
     font-size: 2em;
-    display: none; /* Oculto inicialmente */
+    display: none; /*Para ocultar el coche en un principio */
 }
 .coche.animate {
     display: block;
-    animation: moverCoche 10s linear forwards; /* El coche se mueve solo una vez */
+    animation: moverCoche 10s linear forwards; 
 }
 @keyframes moverCoche {
     0% {
@@ -30,32 +31,42 @@ body {
     padding: 0;
     color: #F2D785;
     background-color:  #A62424;
-    /*background-size: cover; /* Hace que la imagen cubra todo el fondo 
-    /*background-image: url(l.jpeg);
-    background-size: cover;  Scales image to cover the full background */
-    /*background-repeat: no-repeat; /* Prevents image from repeating */
-    /*background-position: center; /* Centers image on the page */
-    /*height: 100vh; /* Altura del 100% de la ventana */
-    margin: 150; /* Elimina el margen por defecto */
+    margin: 150; /*Margen para que el texto no quede centrado dentro del área roja*/
 }
 #botonF100 {
     width: 150px;         
     height: 50px;         
     font-size: 16px;      
-    padding: 10px 20px;   
+    padding: 10px 20px;
     font-family: "Comic Sans MS", "Comic Sans", cursive;    
-    color: #eeeeeeff;
-    background-color: #798086ff;
+    color:  #1f2421ff;
+    background-image: url('boton.png'); 
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-color: transparent; 
+    border: none;
 }
 
 #botonF1000 {
-    width: 150px;         
+    /*width: 150px;         
     height: 50px;         
     font-size: 16px;     
     padding: 10px 20px;   
     font-family: "Comic Sans MS", "Comic Sans", cursive;
     color: #eeeeeeff;
     background-color: #798086ff;
+    */
+    width: 150px;         
+    height: 50px;         
+    font-size: 16px;      
+    padding: 10px 20px;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;    
+    color:  #1f2421ff;
+    background-image: url('boton.png'); 
+    background-size: 100% 100%; 
+    background-repeat: no-repeat;
+    background-color: transparent; 
+    border: none;
 }
 
 .side-image {
@@ -66,8 +77,8 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     z-index: -1;
-    background-color: #1f2421ff; /* Use background-color for the background */
-    color: #333; /* Color for any text inside, change as needed */
+    background-color: #1f2421ff; 
+    color: #333; /
 }
 
 /* Imagen izquierda */

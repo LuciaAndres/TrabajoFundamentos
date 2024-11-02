@@ -1,19 +1,22 @@
-       document.getElementById("botonF100").addEventListener("click",function(){Simular(100)});
+        document.getElementById("botonF100").addEventListener("click",function(){Simular(100)});
+        document.getElementById("botonF1000").addEventListener("click", function () { Simular(1000) });
 
-        document.getElementById("botonF1000").addEventListener("click",function(){Simular(1000)});
-          // Seleccionamos el checkbox y el span donde mostraremos el valor
-          const sliderCheckbox = document.getElementById('sliderCheckbox');
-          const sliderValue = document.getElementById('sliderValue');
-          var firstload = true;
-          let sliderChecked = sliderCheckbox.checked;
-          // Función que actualiza el valor del slider
-          function updateSliderValue() {
+        // Seleccionamos el checkbox y el span donde mostraremos el valor
+
+        const sliderCheckbox = document.getElementById('sliderCheckbox');
+        const sliderValue = document.getElementById('sliderValue');
+        var firstload = true;
+        let sliderChecked = sliderCheckbox.checked;
+
+        // Función que actualiza el valor del slider
+
+        function updateSliderValue() {
             sliderChecked = sliderCheckbox.checked;
-          }
+        }
+        // Evento para cuando cambia el estado del slider
 
-          // Evento para cuando cambia el estado del slider
-          sliderCheckbox.addEventListener('change', updateSliderValue);
-         function animateCar() {
+        sliderCheckbox.addEventListener('change', updateSliderValue);
+        function animateCar() {
             const coche = document.querySelector(".coche");
             coche.classList.remove("animate"); // Reinicia la animación si ya está activada
             void coche.offsetWidth; // Forzar reflow para reiniciar la animación
@@ -31,45 +34,61 @@
             var galvanizadas = 0;
             var pulidas = 0;
             var pintados = 0;
-        	animateCar();
+
+            animateCar();
+
             if (!sliderChecked || firstload) 
             {
-            Fab = new Fabrica();
-            firstload = false;
+                Fab = new Fabrica();
+                firstload = false;
             }
 
-        let piezas = Fab.fabricar(turnos);
-        for (var i = 0 ; i < piezas.length ; i++) {
-        	let pieza = piezas[i];
-    		if (piezas[i] instanceof PiezaElectrica)
-   			{
-        		pElectricas++;
-        		if (pieza.potencia == 1 || pieza.potencia == 5) 
-        		{
-        			bNormal++;
-        		} else {
-        			bEspecial++;
-        		}
-    		} else {
-        		pMecanicas++;
-        		  if(pieza.material == "Acero")
-                        {
+            let piezas = Fab.fabricar(turnos);
+
+            for (var i = 0; i < piezas.length; i++) {
+
+                let pieza = piezas[i];
+
+    		    if (piezas[i] instanceof PiezaElectrica)
+   			    {
+                    pElectricas++;
+
+        		    if (pieza.potencia == 1 || pieza.potencia == 5) 
+        		    {
+                        bNormal++;
+
+                    } else {
+
+                        bEspecial++;
+
+                    }
+
+                } else {
+
+                     pMecanicas++;
+
+        		     if(pieza.material == "Acero")
+                     {
                          galvanizadas++;
-                        } else if(pieza.material == "Titanio"){
+
+                     } else if (pieza.material == "Titanio") {
+
                          pulidas++;
-                         
-                        } else {
+                       
+                     } else {
+
                          pintados++;
-                        
-                        }
-    		}
-    	}
-        var texto = "<p>" + "La factoría ha fabricado " + (pElectricas+pMecanicas) + " de las cuales " +pElectricas+" son de tipo eléctrico y "+pMecanicas+" son de tipo mecánico. " + "</p>" +
-        "<p>" + "De las eléctricas, la estación de tratamiento ha aplicado barniz normal a "+ bNormal +" y ha aplicado barniz especial a "+ bEspecial +"." + "</p>" +
-        "<p>" + "De las mecánicas ha galvanizado "+ galvanizadas +", ha pintado "+ pintados +" y ha pulido "+ pulidas +"" + "</p>" ;
-    	console.log(texto);
+                    
+                     }
+    		    }
+            }
+
+            var texto = "<p>" + "La factoría ha fabricado " + (pElectricas+pMecanicas) + " de las cuales " +pElectricas+" son de tipo eléctrico y "+pMecanicas+" son de tipo mecánico." + "</p>" +
+            "<p>" + "De las eléctricas, la estación de tratamiento ha aplicado barniz normal a "+ bNormal +" y ha aplicado barniz especial a "+ bEspecial +"." + "</p>" +
+            "<p>" + "De las mecánicas ha galvanizado "+ galvanizadas +", ha pintado "+ pintados +" y ha pulido "+ pulidas +"" + "</p>" ;
+    	    console.log(texto);
         
-        document.getElementById("resultado").innerHTML = texto;
+            document.getElementById("resultado").innerHTML = texto;
         }
 
         class Fabrica
@@ -80,20 +99,19 @@
                 this.Pros = new EstacionDeTratamiento();
                 this.piezas = [];
             }
-        fabricar(turnos)
-        {
-        	let pieza = null;
-            for(var i = 0; i < turnos; i++)
+            fabricar(turnos)
             {
+        	    let pieza = null;
+                for(var i = 0; i < turnos; i++)
+                {
               
-                pieza = this.Fac.generarPieza();
-                pieza = this.Pros.procesarPieza(pieza);
-                this.piezas.push(pieza);
+                    pieza = this.Fac.generarPieza();
+                    pieza = this.Pros.procesarPieza(pieza);
+                    this.piezas.push(pieza);
                     
+                }
+                return this.piezas;
             }
-            return this.piezas;
-        }
-
         }
 
         class Factoria 
@@ -116,32 +134,36 @@
 
         class EstacionDeTratamiento 
         {
-         procesarPieza(pieza)
+            procesarPieza(pieza)
             {
                 let tratamiento = null;
                 if(pieza instanceof PiezaElectrica )
                 {
                     if(pieza.potencia == 1 || pieza.potencia == 5)
-                        {
-                         tratamiento = "Barnizada Normal";
+                    {
+
+                        tratamiento = "Barnizada Normal";
                        
-                        } else {
-                         tratamiento = "Barnizada Especial";
+                    } else {
+
+                        tratamiento = "Barnizada Especial";
                          
-                        }
+                    }
                 } else {
                     if(pieza.material == "Acero")
-                        {
-                         tratamiento = "Galvanizada";
+                    {
+
+                        tratamiento = "Galvanizada";
                          
-                        } else if(pieza.material == "Titanio"){
+                    } else if(pieza.material == "Titanio"){
                          tratamiento = "Pulida";
                          
-                        } else {
+                    } else {
+
                          tratamiento = "Pintada";
                         
-                        }
-                     }
+                    }
+                }
                 pieza.procesamiento = tratamiento;
 
                 return pieza;
