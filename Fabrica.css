@@ -3,7 +3,7 @@
 	padding: 5em 0;
 }
 .coche {
-    position: static;
+    position: absolute;
     top: 10px;
     left: -100px; /* Empieza fuera de la pantalla a la izquierda */
     font-size: 2em;
@@ -36,7 +36,7 @@ body {
     /*background-repeat: no-repeat; /* Prevents image from repeating */
     /*background-position: center; /* Centers image on the page */
     /*height: 100vh; /* Altura del 100% de la ventana */
-    /*margin: 150; /* Elimina el margen por defecto */
+    margin: 150; /* Elimina el margen por defecto */
 }
 #botonF100 {
     width: 150px;         
