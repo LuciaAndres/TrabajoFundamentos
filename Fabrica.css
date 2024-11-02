@@ -3,7 +3,7 @@
 	padding: 5em 0;
 }
 .coche {
-    position: fixed;
+    position: static;
     top: 10px;
     left: -100px; /* Empieza fuera de la pantalla a la izquierda */
     font-size: 2em;
@@ -24,29 +24,28 @@
 .texto{
 	font-size: 36px ;
 	font-family: "Times New Roman", Times, serif;
-    /*font-family: "Comic Sans MS", "Comic Sans", cursive;*/
 }
 body {
-    background-color: black; /* Cambia este color por el que desees */
     margin: 0;
     padding: 0;
-    color: whitesmoke;
-    background-color: #141d26;
-    background-size: cover; /* Hace que la imagen cubra todo el fondo 
+    color: #F2D785;
+    background-color:  #A62424;
+    /*background-size: cover; /* Hace que la imagen cubra todo el fondo 
     /*background-image: url(l.jpeg);
     background-size: cover;  Scales image to cover the full background */
-    background-repeat: no-repeat; /* Prevents image from repeating */
-    background-position: center; /* Centers image on the page */
-    height: 100vh; /* Altura del 100% de la ventana */
-    margin: 150; /* Elimina el margen por defecto */
+    /*background-repeat: no-repeat; /* Prevents image from repeating */
+    /*background-position: center; /* Centers image on the page */
+    /*height: 100vh; /* Altura del 100% de la ventana */
+    /*margin: 150; /* Elimina el margen por defecto */
 }
 #botonF100 {
     width: 150px;         
     height: 50px;         
     font-size: 16px;      
     padding: 10px 20px;   
-    font-family: "Comic Sans MS", "Comic Sans", cursive;    color: whitesmoke;
-    background-color: black;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;    
+    color: #eeeeeeff;
+    background-color: #798086ff;
 }
 
 #botonF1000 {
@@ -55,8 +54,8 @@ body {
     font-size: 16px;     
     padding: 10px 20px;   
     font-family: "Comic Sans MS", "Comic Sans", cursive;
-    color: whitesmoke;
-    background-color: black;
+    color: #eeeeeeff;
+    background-color: #798086ff;
 }
 
 .side-image {
@@ -67,16 +66,17 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
      z-index: -1;
+     color: #F2D785;
  }
     /* Imagen izquierda */
 .left-image {
     left: 0;
-    background-image: url('ruedai (1).jpg');
+     color: #F2D785;
 }
     /* Imagen derecha */
 .right-image {
     right: 0;
-    background-image: url('ruedas.jpeg');
+    color: #F2D785;
 }
 .switch {
     position: relative;
@@ -96,7 +96,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: black;
+    background-color: #1f2421ff;
     transition: .4s;
     border-radius: 34px;
 }
@@ -112,7 +112,7 @@ body {
     border-radius: 50%;
 }
 input:checked + .slider {
-     background-color: purple;
+     background-color: #0088ff;
  }
 input:checked + .slider:before {
     transform: translateX(26px);
