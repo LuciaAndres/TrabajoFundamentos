@@ -65,18 +65,19 @@ body {
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-     z-index: -1;
-     color: #F2D785;
- }
-    /* Imagen izquierda */
+    z-index: -1;
+    background-color: #1f2421ff; /* Use background-color for the background */
+    color: #333; /* Color for any text inside, change as needed */
+}
+
+/* Imagen izquierda */
 .left-image {
     left: 0;
-     color: #F2D785;
 }
-    /* Imagen derecha */
+
+/* Imagen derecha */
 .right-image {
     right: 0;
-    color: #F2D785;
 }
 .switch {
     position: relative;
