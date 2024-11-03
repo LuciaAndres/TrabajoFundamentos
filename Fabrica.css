@@ -1,74 +1,81 @@
-.contenedora{
-	text-align: center;
-	padding: 5em 0;
-    padding-top: 20px;
+body {
+    margin: 0;
+    padding: 0;
+    color: #F2D785;
+    background-color: #898989; /* Fondo gris oscuro en toda la página */
+}
+.top-images {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+    background-color: #d3d3d3; 
+    border-bottom: 30px solid #A62424; /* Línea inferior de color coordinado */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+.top-image {
+    width: 130px; 
+    height: auto;
+    border-radius: 8px; 
+    transition: transform 0.3s ease;
+}
+.top-image:hover {
+    transform: scale(1.05); 
 }
 .coche {
-    position: absolute; /*Para que se quede la linea de coches arriba */
-    top: 10px;
-    left: -100px; /*Empieza desde fuera de la pantalla*/
-    font-size: 2em;
-    display: none; /*Para ocultar el coche en un principio */
+    position: absolute;
+    top: 140px;
+    left: 0;
+    font-size: 1.5em; /* Tamaño más pequeño para ser más sutil */
+    color: #ffcc00; /* Amarillo dorado para buen contraste */
+    opacity: 0.9;
+    display: none;
 }
+
 .coche.animate {
     display: block;
-    animation: moverCoche 10s linear forwards; 
+    animation: moverCoche 10s linear forwards;
 }
+
 @keyframes moverCoche {
     0% {
-        transform: translateX(100%);
+        transform: translateX(150%);
     }
     100% {
         transform: translateX(-150vw);
     }
 }
-.texto{
-	font-size: 36px ;
-	font-family: "Times New Roman", Times, serif;
+
+.contenedora {
+    text-align: center;
+    padding: 20px 0;
 }
-body {
-    margin: 0;
-    padding: 0;
-    color: #F2D785;
-    background-color:  #A62424;
-    margin: 150; /*Margen para que el texto no quede centrado dentro del área roja*/
+.texto {
+    font-size: 1.2em;
+    color: #f2d785;
+    font-family: "Georgia", serif;
+    margin-bottom: 10px;
 }
-#botonF100 {
-    width: 150px;         
-    height: 50px;         
-    font-size: 16px;      
-    padding: 10px 20px;
-    font-family: "Comic Sans MS", "Comic Sans", cursive;    
-    color:  #1f2421ff;
-    background-image: url('boton.png'); 
-    background-size: 100% 100%; 
+#botonF100, #botonF1000 {
+    width: 160px;
+    height: 50px;
+    font-size: 1em;
+    font-weight: 700;
+    color: #1f2421;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-color: transparent; 
-    border: none;
+    background-color: transparent;
+    border: 2px solid #f2d785; 
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
 }
 
-#botonF1000 {
-    /*width: 150px;         
-    height: 50px;         
-    font-size: 16px;     
-    padding: 10px 20px;   
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
-    color: #eeeeeeff;
-    background-color: #798086ff;
-    */
-    width: 150px;         
-    height: 50px;         
-    font-size: 16px;      
-    padding: 10px 20px;
-    font-family: "Comic Sans MS", "Comic Sans", cursive;    
-    color:  #1f2421ff;
-    background-image: url('boton.png'); 
-    background-size: 100% 100%; 
-    background-repeat: no-repeat;
-    background-color: transparent; 
-    border: none;
+#botonF100:hover, #botonF1000:hover {
+    transform: scale(1.05); /* Efecto de agrandamiento */
+    background-color: #f2d785; /* Fondo al pasar el cursor */
+    color: #1f2421; /* Color de texto contrastante */
 }
-
 .side-image {
     position: fixed;
     top: 0;
@@ -76,17 +83,11 @@ body {
     height: 100%;
     background-size: cover;
     background-repeat: no-repeat;
-    z-index: -1;
-    background-color: #1f2421ff; 
-    color: #333; /
+    background-color: #1f2421;
 }
-
-/* Imagen izquierda */
 .left-image {
     left: 0;
 }
-
-/* Imagen derecha */
 .right-image {
     right: 0;
 }
@@ -96,11 +97,7 @@ body {
     width: 60px;
     height: 34px;
 }
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
+
 .slider {
     position: absolute;
     cursor: pointer;
@@ -108,10 +105,11 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #1f2421ff;
+    background-color: #1f2421;
     transition: .4s;
     border-radius: 34px;
 }
+
 .slider:before {
     position: absolute;
     content: "";
@@ -123,9 +121,11 @@ body {
     transition: .4s;
     border-radius: 50%;
 }
+
 input:checked + .slider {
-     background-color: #0088ff;
- }
+    background-color: #ffcc00; /* Cambio de color cuando está activado */
+}
+
 input:checked + .slider:before {
     transform: translateX(26px);
 }
