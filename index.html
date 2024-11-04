@@ -10,15 +10,15 @@
             margin: 0;
             padding: 0;
             color: #F2D785;
-            background-color: #898989; /* Fondo gris oscuro en toda la página */
+            background-color: #898989; 
         }
-        .top-images {
+        .top-images { /*este, top-image y top-image:hover son para las imágenes que salen arriba*/
             display: flex;
             justify-content: center;
             gap: 20px;
             padding: 15px;
             background-color: #d3d3d3; 
-            border-bottom: 30px solid #A62424; /* Línea inferior de color coordinado */
+            border-bottom: 30px solid #A62424; 
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
         }
         .top-image {
@@ -34,8 +34,8 @@
             position: absolute;
             top: 140px;
             left: 0;
-            font-size: 1.5em; /* Tamaño más pequeño para ser más sutil */
-            color: #ffcc00; /* Amarillo dorado para buen contraste */
+            font-size: 1.5em; 
+            color: #ffcc00; 
             opacity: 0.9;
             display: none;
         }
@@ -45,7 +45,7 @@
             animation: moverCoche 10s linear forwards;
         }
 
-        @keyframes moverCoche {
+        @keyframes moverCoche { /*donde empieza y acaba el coche*/
             0% {
                 transform: translateX(150%);
             }
@@ -64,7 +64,7 @@
             font-family: "Georgia", serif;
             margin-bottom: 10px;
         }
-        #botonF100, #botonF1000 {
+        #botonF100, #botonF1000 { /*Definimos el estilo de los dos botones*/
             width: 160px;
             height: 50px;
             font-size: 1em;
@@ -79,12 +79,12 @@
             cursor: pointer;
         }
 
-        #botonF100:hover, #botonF1000:hover {
-            transform: scale(1.05); /* Efecto de agrandamiento */
-            background-color: #f2d785; /* Fondo al pasar el cursor */
-            color: #1f2421; /* Color de texto contrastante */
+        #botonF100:hover, #botonF1000:hover { /*Para que los botones se hagan mas grandes y cambien de color al pasar el raton por encima*/
+            transform: scale(1.05); 
+            background-color: #f2d785; 
+            color: #1f2421; 
         }
-        .side-image {
+        .side-image { /*Los siguientes tres estilos son para los banners laterales*/
             position: fixed;
             top: 0;
             width: 150px;
@@ -99,7 +99,7 @@
         .right-image {
             right: 0;
         }
-        .switch {
+        .switch { /*lo que queda dentro de style es para el slider de la continuidad*/
             position: relative;
             display: inline-block;
             width: 60px;
@@ -183,12 +183,12 @@
             <div id="resultado"></div> 
         </div>
         <script>
-            document.getElementById("botonF100").addEventListener("click", function(){Simular(100)});
-            document.getElementById("botonF1000").addEventListener("click", function () { Simular(1000) });
+            document.getElementById("botonF100").addEventListener("click", function(){Simular(100)}); //vincula el boton al js
+            document.getElementById("botonF1000").addEventListener("click", function () { Simular(1000) });//vincula el boton al js
 
             // Seleccionamos el checkbox y el span donde mostraremos el valor
 
-            const sliderCheckbox = document.getElementById('sliderCheckbox');
+            const sliderCheckbox = document.getElementById('sliderCheckbox'); 
             const sliderValue = document.getElementById('sliderValue');
             var firstload = true;
             let sliderChecked = sliderCheckbox.checked;
@@ -220,21 +220,21 @@
                 var pulidas = 0;
                 var pintados = 0;
 
-                animateCar();
+                animateCar();  //Funcion de animar el coche al pulsar el boton
 
-                if (!sliderChecked || firstload) 
+                if (!sliderChecked || firstload)  //Comprueba si el slider esta encendido o si es la primera vez que se ejecuta
                 {
                     Fab = new Fabrica();
                     firstload = false;
                 }
 
-                let piezas = Fab.fabricar(turnos);
+                let piezas = Fab.fabricar(turnos); //llama a la funcion fabrica que produce las puezas
 
-                for (var i = 0; i < piezas.length; i++) {
+                for (var i = 0; i < piezas.length; i++) { //recorre las piezas generadas y las clasifica
 
                     let pieza = piezas[i];
 
-                    if (piezas[i] instanceof PiezaElectrica)
+                    if (piezas[i] instanceof PiezaElectrica) //Si la pieza es electrica
                     {
                         pElectricas++;
 
@@ -248,7 +248,7 @@
 
                         }
 
-                    } else {
+                    } else {//Si la pieza es mecánica
 
                          pMecanicas++;
 
@@ -267,16 +267,16 @@
                          }
                     }
                 }
-
+                //Imprimimos por pantalla el resultado
                 var texto = "<p>" + "La factoría ha fabricado " + (pElectricas+pMecanicas) + " de las cuales " +pElectricas+" son de tipo eléctrico y "+pMecanicas+" son de tipo mecánico." + "</p>" +
                 "<p>" + "De las eléctricas, la estación de tratamiento ha aplicado barniz normal a "+ bNormal +" y ha aplicado barniz especial a "+ bEspecial +"." + "</p>" +
                 "<p>" + "De las mecánicas ha galvanizado "+ galvanizadas +", ha pintado "+ pintados +" y ha pulido "+ pulidas +"" + "</p>" ;
-                console.log(texto);
-            
+                
+                //vincula el texto al html
                 document.getElementById("resultado").innerHTML = texto;
             }
 
-            class Fabrica
+            class Fabrica //maneja creación y procesamiento de piezas
             {
                 constructor()
                 {
@@ -284,7 +284,7 @@
                     this.Pros = new EstacionDeTratamiento();
                     this.piezas = [];
                 }
-                fabricar(turnos)
+                fabricar(turnos) //genera las piezas
                 {
                     let pieza = null;
                     for(var i = 0; i < turnos; i++)
@@ -301,15 +301,15 @@
 
             class Factoria 
             {
-                generarPieza()
+                generarPieza() //genera la pieza
                 {
                     var pieza = null;
-                    let tipo = getRandomInt(10);
-                    if(tipo<3)
+                    let tipo = getRandomInt(10); //Genera un numero para un tipo aleatorio de pieza
+                    if(tipo<3) //En caso de que el numero generado sea menor que tres genera pieza electrica
                     {
                         var pieza = new PiezaElectrica(getRandomInt(5),getRandomInt(4),getRandomInt(4), makeCode("E") , Date(),null);
 
-                    } else {
+                    } else {//En caso de que el numero generado sea mayor que tres genera pieza mecánica
 
                         var pieza = new PiezaMecanica(getRandomInt(5),getRandomInt(3), makeCode("M") ,Date(),null);
                     }
@@ -317,12 +317,12 @@
                 }
             }
 
-            class EstacionDeTratamiento 
+            class EstacionDeTratamiento  
             {
                 procesarPieza(pieza)
                 {
                     let tratamiento = null;
-                    if(pieza instanceof PiezaElectrica )
+                    if(pieza instanceof PiezaElectrica ) //si la pieza es electrica la barniza
                     {
                         if(pieza.potencia == 1 || pieza.potencia == 5)
                         {
@@ -334,7 +334,7 @@
                             tratamiento = "Barnizada Especial";
                              
                         }
-                    } else {
+                    } else { // si la pieza es mecanica la galvaniza, pule o pinta
                         if(pieza.material == "Acero")
                         {
 
@@ -355,7 +355,7 @@
                 } 
             }
 
-            function makeCode(letter)
+            function makeCode(letter) //genera el código de la pieza
             {
                 let Alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
                 let temp = getRandomInt(10000000000) + 10000000000;
@@ -365,12 +365,12 @@
                 return temp;
             }
 
-            function getRandomInt(max)
+            function getRandomInt(max) //devuelve numero aleatorio
             {
                 return Math.floor(Math.random() * max);
             }
 
-            class Pieza
+            class Pieza //clase base 
             {
                  constructor(code,date,procesamiento)
                  {
@@ -378,7 +378,7 @@
                     this.date = date;
                     this.procesamiento = procesamiento;
                  }
-                 get GetCode()
+                 get GetCode() //
                  {
                     return this._code;
                  }
@@ -404,7 +404,7 @@
                 }
             }
 
-            class PiezaElectrica extends Pieza 
+            class PiezaElectrica extends Pieza //define las piezas electricas
             {
                 constructor(name, potencia, voltage, code, date, procesamiento)
                 {
@@ -443,7 +443,7 @@
                 }
             }
 
-            class PiezaMecanica extends Pieza 
+            class PiezaMecanica extends Pieza //define las piezas mecanicas
             {
                 constructor(name, material, code, date, procesamiento)
                 {
